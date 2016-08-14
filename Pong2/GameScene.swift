@@ -8,38 +8,125 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
-    override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!"
-        myLabel.fontSize = 45
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        
-        self.addChild(myLabel)
-    }
+enum GameOption: Int {
+    case Play = 0, AI
+}
+
+class GameScene: SKScene, GameDelegate {
+    let ping = SKAction.playSoundFileNamed("ping.wav", waitForCompletion: false)
+    var game: Game!
+    var scoreBoard: ScoreBoard!
+    var pauseMenu: PauseMenu!
+    var lastTime: CFTimeInterval!
+    var gvcDelegate: GameViewControllerDelegate!
+    var option: GameOption!
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
+    override func didMoveToView(view: SKView) {
+        backgroundColor = UIColor.blackColor()
+        anchorPoint = CGPoint(x: 0, y: 0.5)
         
-        for touch in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
+        game = Game(option: option)
+        game.setDelegate(self)
+        game.ball.setSprite(self)
+        _ = game.players.map({$0.setSprite(self); $0.setTouchZone(self)})
+        scoreBoard = ScoreBoard(scene: self)
+        scoreBoard.gameDelegate = self
+        pauseMenu = PauseMenu(scene: self, delegate: self)
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+        guard let lastTime = lastTime else {
+            self.lastTime = currentTime
+            return
+        }
+        
+        let deltaTime: CGFloat = CGFloat(currentTime - lastTime)
+        game.update(deltaTime, scene: self)
+        
+        self.lastTime = currentTime
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard let firstTouch = touches.first else {
+            return
+        }
+        
+        if !game.paused {
+            scoreBoard.press(firstTouch)
+            game.touch(touches, scene: self)
+        } else {
+            pauseMenu.touch(firstTouch)
+        }
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for player in game.players {
+            guard player is PlayerHuman else {
+                continue
+            }
+            
+            let player = player as! PlayerHuman
+            
+            for touch in touches {
+                if nodeAtPoint(touch.previousLocationInNode(self)) == player.touchZone && player.canMove {
+                    player.moveTo(touch.locationInNode(self))
+                }
+            }
+        }
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard let firstTouch = touches.first else {
+            return
+        }
+        
+        if game.paused {
+            pauseMenu.release(firstTouch)
+        }
+    }
+    
+    // game delgate functions
+    func ballHitWall() {
+        scene?.runAction(ping)
+    }
+    
+    func ballHitPlayer() {
+        scene?.runAction(ping)
+    }
+    
+    func roundStarted() {
+        scoreBoard.hideWinLabel()
+    }
+    
+    func roundEnded(winningSide: PlayerSide) {
+        game.endRound(winningSide)
+        scoreBoard.setScore(winningSide,
+                            score: game.players[winningSide == PlayerSide.Left ? 0 : 1].score)
+    }
+    
+    func gameEnded(winningSide: PlayerSide) {
+        scoreBoard.presentWinner(game.players[winningSide == PlayerSide.Left ? 0 : 1].name)
+        game.endGame(winningSide)
+    }
+    
+    func gameReseted() {
+        pauseMenu.hide()
+        game.reset()
+        scoreBoard.hideWinLabel()
+        _ = game.players.map({scoreBoard.setScore($0.side, score: $0.score)})
+    }
+    
+    func gamePaused() {
+        pauseMenu.show()
+        game.pause()
+    }
+    
+    func gameResumed() {
+        pauseMenu.hide()
+        game.resume()
+    }
+    
+    func returnMenu() {
+        gvcDelegate.changeSceneToMenuScene()
     }
 }

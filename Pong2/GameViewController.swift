@@ -9,29 +9,55 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+protocol GameViewControllerDelegate {
+    func changeSceneToGameSceneWithPlayOption()
+    func changeSceneToGameSceneWithAIOption()
+    func changeSceneToMenuScene()
+}
 
+class GameViewController: UIViewController, GameViewControllerDelegate {
+    var currentScene: SKScene!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let scene = GameScene(fileNamed:"GameScene") {
-            // Configure the view.
-            let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
-            
-            skView.presentScene(scene)
-        }
+        changeSceneToMenuScene()
+    }
+    
+    func changeSceneToGameSceneWithPlayOption() {
+        changeSceneToGameScene(GameOption.Play)
+    }
+    
+    func changeSceneToGameSceneWithAIOption() {
+        changeSceneToGameScene(GameOption.AI)
+    }
+    
+    func changeSceneToGameScene(option: GameOption) {
+        let skView = view as! SKView
+        
+        currentScene = GameScene(size: skView.bounds.size)
+        currentScene.scaleMode = .AspectFill
+        
+        let scene = currentScene as! GameScene
+        scene.gvcDelegate = self
+        scene.option = option
+        
+        skView.presentScene(currentScene)
+    }
+    
+    func changeSceneToMenuScene() {
+        let skView = view as! SKView
+        
+        currentScene = MenuScene(size: skView.bounds.size)
+        currentScene.scaleMode = .AspectFill
+        
+        let scene = currentScene as! MenuScene
+        scene.gvcDelegate = self
+        
+        skView.presentScene(currentScene)
     }
 
     override func shouldAutorotate() -> Bool {
-        return true
+        return false
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
@@ -40,11 +66,6 @@ class GameViewController: UIViewController {
         } else {
             return .All
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
     }
 
     override func prefersStatusBarHidden() -> Bool {

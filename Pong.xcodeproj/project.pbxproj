@@ -8,24 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		2268CF961D5C9605008CEE56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2268CF951D5C9605008CEE56 /* AppDelegate.swift */; };
-		2268CF981D5C9605008CEE56 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2268CF971D5C9605008CEE56 /* GameScene.sks */; };
 		2268CF9A1D5C9605008CEE56 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2268CF991D5C9605008CEE56 /* GameScene.swift */; };
 		2268CF9C1D5C9605008CEE56 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2268CF9B1D5C9605008CEE56 /* GameViewController.swift */; };
 		2268CF9F1D5C9605008CEE56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2268CF9D1D5C9605008CEE56 /* Main.storyboard */; };
 		2268CFA11D5C9605008CEE56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2268CFA01D5C9605008CEE56 /* Assets.xcassets */; };
-		2268CFA41D5C9605008CEE56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2268CFA21D5C9605008CEE56 /* LaunchScreen.storyboard */; };
+		2268CFAF1D5C967D008CEE56 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2268CFAE1D5C967D008CEE56 /* Game.swift */; };
+		2268CFB11D5C9686008CEE56 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2268CFB01D5C9686008CEE56 /* Player.swift */; };
+		2268CFB31D5C9690008CEE56 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2268CFB21D5C9690008CEE56 /* Ball.swift */; };
+		226F40D01D5F1FEA003A9F4C /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F40CF1D5F1FEA003A9F4C /* MenuScene.swift */; };
+		226F40D21D5F2257003A9F4C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F40D11D5F2257003A9F4C /* Button.swift */; };
+		226F40D51D5F5005003A9F4C /* ping.wav in Resources */ = {isa = PBXBuildFile; fileRef = 226F40D41D5F5005003A9F4C /* ping.wav */; };
+		226F40D71D5F533B003A9F4C /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F40D61D5F533B003A9F4C /* PauseMenu.swift */; };
+		226F40D91D5F757B003A9F4C /* PlayerHuman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F40D81D5F757B003A9F4C /* PlayerHuman.swift */; };
+		226F40DB1D5F7586003A9F4C /* PlayerAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F40DA1D5F7586003A9F4C /* PlayerAI.swift */; };
+		229488181D5E635300FEA340 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229488171D5E635300FEA340 /* Scoreboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2268CF921D5C9604008CEE56 /* Pong2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pong2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2268CF921D5C9604008CEE56 /* Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2268CF951D5C9605008CEE56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2268CF971D5C9605008CEE56 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		2268CF991D5C9605008CEE56 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		2268CF9B1D5C9605008CEE56 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		2268CF9E1D5C9605008CEE56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2268CFA01D5C9605008CEE56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2268CFA31D5C9605008CEE56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2268CFA51D5C9605008CEE56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2268CFAE1D5C967D008CEE56 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		2268CFB01D5C9686008CEE56 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		2268CFB21D5C9690008CEE56 /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		226F40CF1D5F1FEA003A9F4C /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		226F40D11D5F2257003A9F4C /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		226F40D41D5F5005003A9F4C /* ping.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ping.wav; sourceTree = "<group>"; };
+		226F40D61D5F533B003A9F4C /* PauseMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
+		226F40D81D5F757B003A9F4C /* PlayerHuman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerHuman.swift; sourceTree = "<group>"; };
+		226F40DA1D5F7586003A9F4C /* PlayerAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAI.swift; sourceTree = "<group>"; };
+		229488171D5E635300FEA340 /* Scoreboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +58,7 @@
 		2268CF891D5C9604008CEE56 = {
 			isa = PBXGroup;
 			children = (
-				2268CF941D5C9605008CEE56 /* Pong2 */,
+				2268CF941D5C9605008CEE56 /* Pong */,
 				2268CF931D5C9604008CEE56 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,32 +66,73 @@
 		2268CF931D5C9604008CEE56 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2268CF921D5C9604008CEE56 /* Pong2.app */,
+				2268CF921D5C9604008CEE56 /* Pong.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2268CF941D5C9605008CEE56 /* Pong2 */ = {
+		2268CF941D5C9605008CEE56 /* Pong */ = {
 			isa = PBXGroup;
 			children = (
 				2268CF951D5C9605008CEE56 /* AppDelegate.swift */,
-				2268CF971D5C9605008CEE56 /* GameScene.sks */,
-				2268CF991D5C9605008CEE56 /* GameScene.swift */,
 				2268CF9B1D5C9605008CEE56 /* GameViewController.swift */,
-				2268CF9D1D5C9605008CEE56 /* Main.storyboard */,
+				2268CFAB1D5C9610008CEE56 /* GameObjects */,
+				2268CFAD1D5C965F008CEE56 /* Scenes */,
+				226F40D31D5F4FF2003A9F4C /* Sounds */,
+				2268CFAC1D5C9624008CEE56 /* Graphics */,
 				2268CFA01D5C9605008CEE56 /* Assets.xcassets */,
-				2268CFA21D5C9605008CEE56 /* LaunchScreen.storyboard */,
 				2268CFA51D5C9605008CEE56 /* Info.plist */,
 			);
+			name = Pong;
 			path = Pong2;
+			sourceTree = "<group>";
+		};
+		2268CFAB1D5C9610008CEE56 /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				2268CFAE1D5C967D008CEE56 /* Game.swift */,
+				2268CFB21D5C9690008CEE56 /* Ball.swift */,
+				2268CFB01D5C9686008CEE56 /* Player.swift */,
+				226F40D81D5F757B003A9F4C /* PlayerHuman.swift */,
+				226F40DA1D5F7586003A9F4C /* PlayerAI.swift */,
+				229488171D5E635300FEA340 /* Scoreboard.swift */,
+				226F40D11D5F2257003A9F4C /* Button.swift */,
+				226F40D61D5F533B003A9F4C /* PauseMenu.swift */,
+			);
+			name = GameObjects;
+			sourceTree = "<group>";
+		};
+		2268CFAC1D5C9624008CEE56 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				2268CF9D1D5C9605008CEE56 /* Main.storyboard */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+		2268CFAD1D5C965F008CEE56 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2268CF991D5C9605008CEE56 /* GameScene.swift */,
+				226F40CF1D5F1FEA003A9F4C /* MenuScene.swift */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		226F40D31D5F4FF2003A9F4C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				226F40D41D5F5005003A9F4C /* ping.wav */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2268CF911D5C9604008CEE56 /* Pong2 */ = {
+		2268CF911D5C9604008CEE56 /* Pong */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2268CFA81D5C9605008CEE56 /* Build configuration list for PBXNativeTarget "Pong2" */;
+			buildConfigurationList = 2268CFA81D5C9605008CEE56 /* Build configuration list for PBXNativeTarget "Pong" */;
 			buildPhases = (
 				2268CF8E1D5C9604008CEE56 /* Sources */,
 				2268CF8F1D5C9604008CEE56 /* Frameworks */,
@@ -85,9 +142,9 @@
 			);
 			dependencies = (
 			);
-			name = Pong2;
+			name = Pong;
 			productName = Pong2;
-			productReference = 2268CF921D5C9604008CEE56 /* Pong2.app */;
+			productReference = 2268CF921D5C9604008CEE56 /* Pong.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,10 +159,11 @@
 				TargetAttributes = {
 					2268CF911D5C9604008CEE56 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2HD6GD9MAB;
 					};
 				};
 			};
-			buildConfigurationList = 2268CF8D1D5C9604008CEE56 /* Build configuration list for PBXProject "Pong2" */;
+			buildConfigurationList = 2268CF8D1D5C9604008CEE56 /* Build configuration list for PBXProject "Pong" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -118,7 +176,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2268CF911D5C9604008CEE56 /* Pong2 */,
+				2268CF911D5C9604008CEE56 /* Pong */,
 			);
 		};
 /* End PBXProject section */
@@ -128,10 +186,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2268CF981D5C9605008CEE56 /* GameScene.sks in Resources */,
-				2268CFA41D5C9605008CEE56 /* LaunchScreen.storyboard in Resources */,
 				2268CFA11D5C9605008CEE56 /* Assets.xcassets in Resources */,
 				2268CF9F1D5C9605008CEE56 /* Main.storyboard in Resources */,
+				226F40D51D5F5005003A9F4C /* ping.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,9 +199,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226F40DB1D5F7586003A9F4C /* PlayerAI.swift in Sources */,
+				226F40D91D5F757B003A9F4C /* PlayerHuman.swift in Sources */,
+				2268CFB31D5C9690008CEE56 /* Ball.swift in Sources */,
 				2268CF9A1D5C9605008CEE56 /* GameScene.swift in Sources */,
+				229488181D5E635300FEA340 /* Scoreboard.swift in Sources */,
+				226F40D01D5F1FEA003A9F4C /* MenuScene.swift in Sources */,
 				2268CF9C1D5C9605008CEE56 /* GameViewController.swift in Sources */,
 				2268CF961D5C9605008CEE56 /* AppDelegate.swift in Sources */,
+				2268CFB11D5C9686008CEE56 /* Player.swift in Sources */,
+				226F40D71D5F533B003A9F4C /* PauseMenu.swift in Sources */,
+				226F40D21D5F2257003A9F4C /* Button.swift in Sources */,
+				2268CFAF1D5C967D008CEE56 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,14 +223,6 @@
 				2268CF9E1D5C9605008CEE56 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2268CFA21D5C9605008CEE56 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2268CFA31D5C9605008CEE56 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -259,10 +317,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Pong2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bartgames.Pong2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Pong;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -270,17 +331,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Pong2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bartgames.Pong2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Pong;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2268CF8D1D5C9604008CEE56 /* Build configuration list for PBXProject "Pong2" */ = {
+		2268CF8D1D5C9604008CEE56 /* Build configuration list for PBXProject "Pong" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2268CFA61D5C9605008CEE56 /* Debug */,
@@ -289,13 +353,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2268CFA81D5C9605008CEE56 /* Build configuration list for PBXNativeTarget "Pong2" */ = {
+		2268CFA81D5C9605008CEE56 /* Build configuration list for PBXNativeTarget "Pong" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2268CFA91D5C9605008CEE56 /* Debug */,
 				2268CFAA1D5C9605008CEE56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
