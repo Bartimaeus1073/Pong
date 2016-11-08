@@ -13,8 +13,8 @@ let GAME_WIN_SCORE = 7
 
 protocol GameDelegate {
     func roundStarted()
-    func roundEnded(winningSide: PlayerSide)
-    func gameEnded(winningSide: PlayerSide)
+    func roundEnded(_ winningSide: PlayerSide)
+    func gameEnded(_ winningSide: PlayerSide)
     func gameReseted()
     func ballHitWall()
     func ballHitPlayer()
@@ -37,8 +37,8 @@ class Game {
         var name2: String = ""
         
         switch option {
-        case .Play: vsAI = false; name2 = "Player 2"
-        case .AI: vsAI = true; name2 = "AI"
+        case .play: vsAI = false; name2 = "Player 2"
+        case .ai: vsAI = true; name2 = "AI"
         }
         
         self.init(name1: "Player 1", name2: name2, vsAI: vsAI, gameOption: option)
@@ -47,13 +47,13 @@ class Game {
     init(name1: String, name2: String, vsAI: Bool, gameOption: GameOption) {
         self.gameOption = gameOption
         ball = Ball()
-        players.append(PlayerHuman(name: name1, side: PlayerSide.Left))
+        players.append(PlayerHuman(name: name1, side: PlayerSide.left))
         players.append(vsAI ?
-                        PlayerAI(name: name2, side: PlayerSide.Right) :
-                        PlayerHuman(name: name2, side: PlayerSide.Right))
+                        PlayerAI(name: name2, side: PlayerSide.right) :
+                        PlayerHuman(name: name2, side: PlayerSide.right))
     }
     
-    func setDelegate(delegate: GameDelegate) {
+    func setDelegate(_ delegate: GameDelegate) {
         self.delegate = delegate
         ball.gameDelegate = delegate
     }
@@ -86,7 +86,7 @@ class Game {
         delegate.roundStarted()
     }
     
-    func touch(touches: Set<UITouch>, scene: SKScene) {
+    func touch(_ touches: Set<UITouch>, scene: SKScene) {
         guard !paused else {
             return
         }
@@ -98,12 +98,12 @@ class Game {
                 var oppositePlayer = getPlayerFromSide(oppositeSide)
                 
                 if let humanPlayer = getHumanPlayer()
-                where gameOption == GameOption.AI {
+                , gameOption == GameOption.ai {
                     oppositePlayer = humanPlayer
                 }
                 
                 for touch in touches {
-                    if scene.nodeAtPoint(touch.locationInNode(scene)) == oppositePlayer.touchZone {
+                    if scene.atPoint(touch.location(in: scene)) == oppositePlayer.touchZone {
                         roundStart()
                     }
                 }
@@ -143,11 +143,11 @@ class Game {
         return false
     }
     
-    func getPlayerFromSide(side: PlayerSide) -> Player {
-        return players[side == PlayerSide.Left ? 0 : 1]
+    func getPlayerFromSide(_ side: PlayerSide) -> Player {
+        return players[side == PlayerSide.left ? 0 : 1]
     }
     
-    func endGame(side: PlayerSide) {
+    func endGame(_ side: PlayerSide) {
         let winningPlayer = getPlayerFromSide(side)
         let oppositePlayer = getPlayerFromSide(side.getOpposite())
         ball.stop()
@@ -156,17 +156,17 @@ class Game {
         _ = players.map({$0.canMove = false})
     }
     
-    func update(deltaTime: CGFloat, scene: SKScene) {
+    func update(_ deltaTime: CGFloat, scene: SKScene) {
         ball.move(deltaTime: deltaTime, scene: scene)
         
         if let playerAI = getAIPlayer()
-        where gameOption == GameOption.AI {
+        , gameOption == GameOption.ai {
             let playerAI = playerAI as! PlayerAI
             playerAI.move(ball)
         }
     }
     
-    func endRound(side: PlayerSide) {
+    func endRound(_ side: PlayerSide) {
         let player = getPlayerFromSide(side)
         var oppositePlayer = getPlayerFromSide(side.getOpposite())
         player.score += 1
@@ -174,7 +174,7 @@ class Game {
         lastWin = side
         
         if let humanPlayer = getHumanPlayer()
-            where gameOption == GameOption.AI {
+            , gameOption == GameOption.ai {
             oppositePlayer = humanPlayer
         }
         

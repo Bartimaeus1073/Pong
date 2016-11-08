@@ -9,7 +9,7 @@
 import SpriteKit
 
 class PlayerAI: Player {
-    func move(ball: Ball) {
+    func move(_ ball: Ball) {
         sprite.position.y = ball.sprite.frame.midY
         
         sprite.position.y = clamp(sprite.position.y,

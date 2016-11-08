@@ -24,18 +24,18 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
     }
     
     func changeSceneToGameSceneWithPlayOption() {
-        changeSceneToGameScene(GameOption.Play)
+        changeSceneToGameScene(GameOption.play)
     }
     
     func changeSceneToGameSceneWithAIOption() {
-        changeSceneToGameScene(GameOption.AI)
+        changeSceneToGameScene(GameOption.ai)
     }
     
-    func changeSceneToGameScene(option: GameOption) {
+    func changeSceneToGameScene(_ option: GameOption) {
         let skView = view as! SKView
         
         currentScene = GameScene(size: skView.bounds.size)
-        currentScene.scaleMode = .AspectFill
+        currentScene.scaleMode = .aspectFill
         
         let scene = currentScene as! GameScene
         scene.gvcDelegate = self
@@ -48,7 +48,7 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         let skView = view as! SKView
         
         currentScene = MenuScene(size: skView.bounds.size)
-        currentScene.scaleMode = .AspectFill
+        currentScene.scaleMode = .aspectFill
         
         let scene = currentScene as! MenuScene
         scene.gvcDelegate = self
@@ -56,19 +56,19 @@ class GameViewController: UIViewController, GameViewControllerDelegate {
         skView.presentScene(currentScene)
     }
 
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return false
     }
 
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
         } else {
-            return .All
+            return .all
         }
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 }

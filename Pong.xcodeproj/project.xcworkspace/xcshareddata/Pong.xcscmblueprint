@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D9B4747FC789068CE0A145C4E9C5A041A63A5110",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7F4CAF8AA69EC2BBAF0C9F9F9AB39822C7B8E92D" : 0,
+    "D9B4747FC789068CE0A145C4E9C5A041A63A5110" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "914B4795-BB35-4021-A22C-1B7A364AA17E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7F4CAF8AA69EC2BBAF0C9F9F9AB39822C7B8E92D" : "..",
+    "D9B4747FC789068CE0A145C4E9C5A041A63A5110" : "Pong2\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Pong",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Pong.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Bartimaeus1073\/Programming.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7F4CAF8AA69EC2BBAF0C9F9F9AB39822C7B8E92D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Bartimaeus1073\/Pong.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D9B4747FC789068CE0A145C4E9C5A041A63A5110"
+    }
+  ]
+}

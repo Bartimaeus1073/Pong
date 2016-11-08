@@ -160,6 +160,7 @@
 					2268CF911D5C9604008CEE56 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 2HD6GD9MAB;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -324,6 +325,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bartgames.Pong2;
 				PRODUCT_NAME = Pong;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -338,6 +340,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bartgames.Pong2;
 				PRODUCT_NAME = Pong;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

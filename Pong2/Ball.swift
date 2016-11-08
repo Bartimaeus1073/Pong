@@ -20,7 +20,7 @@ let BALL_SPEED_MODIFIER_WALL_HIT: CGFloat = 20
 let BALL_HIT_PLAYER_MAX_ANGLE: CGFloat = 0.38 * π
 
 // 0 is positive
-func sign(value: CGFloat) -> CGFloat {
+func sign(_ value: CGFloat) -> CGFloat {
     return value < 0 ? -1 : 1
 }
 
@@ -38,18 +38,18 @@ extension CGVector {
 
 class Collision {
     // checks collision between obj1 and obj2
-    static func isColliding(obj1: SKNode, obj2: SKNode) -> Bool {
-        return obj1.intersectsNode(obj2)
+    static func isColliding(_ obj1: SKNode, obj2: SKNode) -> Bool {
+        return obj1.intersects(obj2)
     }
     
-    static func isCollidingBounds(obj: SKNode, bounds: SKNode) -> Bool {
+    static func isCollidingBounds(_ obj: SKNode, bounds: SKNode) -> Bool {
         return  obj.frame.maxX > bounds.frame.maxX ||
                 obj.frame.minX < bounds.frame.minX ||
                 obj.frame.maxY > bounds.frame.maxY ||
                 obj.frame.minY < bounds.frame.minY
     }
     
-    static func traceBack(velocity: CGVector, obj1: SKNode, obj2: SKNode) {
+    static func traceBack(_ velocity: CGVector, obj1: SKNode, obj2: SKNode) {
         guard isColliding(obj1, obj2: obj2) else {
             return
         }
@@ -62,7 +62,7 @@ class Collision {
         }
     }
     
-    static func traceBackBounds(velocity: CGVector, obj: SKNode, bounds: SKNode) {
+    static func traceBackBounds(_ velocity: CGVector, obj: SKNode, bounds: SKNode) {
         let invertedVelocity = CGVector(dx: -velocity.dx, dy: -velocity.dy)
         
         while Collision.isCollidingBounds(obj, bounds: bounds) {
@@ -88,7 +88,7 @@ class Ball: CustomStringConvertible {
         return "Position: \(sprite.position)\nVelocity: \(velocity)"
     }
     
-    func randomVelocity(side: PlayerSide?) {
+    func randomVelocity(_ side: PlayerSide?) {
         var dx: CGFloat
         var dy: CGFloat
         let random = {return CGFloat(arc4random_uniform(BALL_RANDOM_SEED)) - CGFloat(BALL_RANDOM_SEED / 2)}
@@ -108,8 +108,8 @@ class Ball: CustomStringConvertible {
         newVelocity = newVelocity.normalise()
         
         if let side = side {
-            if side == PlayerSide.Left && newVelocity.dx > 0 ||
-                    side == PlayerSide.Right && newVelocity.dx < 0 {
+            if side == PlayerSide.left && newVelocity.dx > 0 ||
+                    side == PlayerSide.right && newVelocity.dx < 0 {
                 newVelocity.dx = -newVelocity.dx
             }
         }
@@ -117,8 +117,8 @@ class Ball: CustomStringConvertible {
         velocity = newVelocity
     }
     
-    func setSprite(scene: SKScene) {
-        sprite = SKSpriteNode(color: UIColor.whiteColor(), size: BALL_SIZE)
+    func setSprite(_ scene: SKScene) {
+        sprite = SKSpriteNode(color: UIColor.white, size: BALL_SIZE)
         sprite.name = "ball"
         sprite.position = CGPoint(x: scene.frame.midX - BALL_SIZE.width / 2,
                                   y: scene.frame.midY - BALL_SIZE.height / 2)
@@ -129,7 +129,7 @@ class Ball: CustomStringConvertible {
         scene.addChild(sprite)
     }
     
-    func start(side: PlayerSide?) {
+    func start(_ side: PlayerSide?) {
         randomVelocity(side)
     }
     
@@ -151,11 +151,11 @@ class Ball: CustomStringConvertible {
     
     func ballHitSide() -> PlayerSide? {
         if sprite.frame.minX < bounds.frame.minX {
-            return .Right
+            return .right
         }
         
         if sprite.frame.maxX > bounds.frame.maxX {
-            return .Left
+            return .left
         }
         
         return nil
@@ -179,8 +179,8 @@ class Ball: CustomStringConvertible {
         }
         
         // colide players
-        let player1 = scene.childNodeWithName("left") as! SKSpriteNode
-        let player2 = scene.childNodeWithName("right") as! SKSpriteNode
+        let player1 = scene.childNode(withName: "left") as! SKSpriteNode
+        let player2 = scene.childNode(withName: "right") as! SKSpriteNode
         
         if Collision.isColliding(sprite, obj2: player1) ||
                     Collision.isColliding(sprite, obj2: player2) {

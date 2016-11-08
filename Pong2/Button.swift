@@ -19,19 +19,19 @@ class Button {
     var scene: SKScene
     var isPressed: Bool = false
     
-    convenience init(scene: SKScene, text: String, x: CGFloat, y: CGFloat, action: () -> ()) {
+    convenience init(scene: SKScene, text: String, x: CGFloat, y: CGFloat, action: @escaping () -> ()) {
         self.init(scene: scene, parent: scene, text: text, x: x, y: y, action: action)
     }
     
-    init(scene: SKScene, parent: SKNode, text: String, x: CGFloat, y: CGFloat, action: () -> ()) {
+    init(scene: SKScene, parent: SKNode, text: String, x: CGFloat, y: CGFloat, action: @escaping () -> ()) {
         self.scene = scene
         self.action = action
         setSprite(parent, x: x, y: y)
         setText(text)
     }
     
-    func touched(location: CGPoint) -> Bool {
-        for node in scene.nodesAtPoint(location) {
+    func touched(_ location: CGPoint) -> Bool {
+        for node in scene.nodes(at: location) {
             if node ==  background {
                 return true
             }
@@ -40,15 +40,15 @@ class Button {
         return false
     }
     
-    func press(touch: UITouch) {
-        if touched(touch.locationInNode(scene)) {
+    func press(_ touch: UITouch) {
+        if touched(touch.location(in: scene)) {
             background.alpha = BUTTON_HIGHLIGHT_ALPHA
             isPressed = true
         }
     }
     
-    func release(touch: UITouch) {
-        if touched(touch.locationInNode(scene)) && isPressed {
+    func release(_ touch: UITouch) {
+        if touched(touch.location(in: scene)) && isPressed {
             action()
             isPressed = false
         }
@@ -56,13 +56,13 @@ class Button {
         background.alpha = BUTTON_DEFAULT_ALPHA
     }
     
-    func setText(text: String) {
+    func setText(_ text: String) {
         textLabel.text = text
     }
     
-    func setSprite(parent: SKNode, x: CGFloat, y: CGFloat) {
+    func setSprite(_ parent: SKNode, x: CGFloat, y: CGFloat) {
         background = SKSpriteNode()
-        background.color = UIColor.whiteColor()
+        background.color = UIColor.white
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         background.position = CGPoint(x: x, y: y)
         background.size = DEFAULT_BUTTON_SIZE
@@ -71,10 +71,10 @@ class Button {
         
         textLabel = SKLabelNode()
         textLabel.position = CGPoint(x: 0, y: 0)
-        textLabel.fontColor = UIColor.blackColor()
+        textLabel.fontColor = UIColor.black
         textLabel.zPosition = 2
-        textLabel.horizontalAlignmentMode = .Center
-        textLabel.verticalAlignmentMode = .Center
+        textLabel.horizontalAlignmentMode = .center
+        textLabel.verticalAlignmentMode = .center
         
         background.addChild(textLabel)
         parent.addChild(background)

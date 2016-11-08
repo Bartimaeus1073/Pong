@@ -9,7 +9,7 @@
 import SpriteKit
 
 class PlayerHuman: Player {
-    func moveTo(location: CGPoint) {
+    func moveTo(_ location: CGPoint) {
         sprite.position.y = clamp(location.y, minVal: touchZone.frame.minY + sprite.frame.height / 2,
                                   maxVal: touchZone.frame.maxY - sprite.frame.height / 2)
     }

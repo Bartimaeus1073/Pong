@@ -9,7 +9,7 @@
 import SpriteKit
 
 enum GameOption: Int {
-    case Play = 0, AI
+    case play = 0, ai
 }
 
 class GameScene: SKScene, GameDelegate {
@@ -21,8 +21,8 @@ class GameScene: SKScene, GameDelegate {
     var gvcDelegate: GameViewControllerDelegate!
     var option: GameOption!
     
-    override func didMoveToView(view: SKView) {
-        backgroundColor = UIColor.blackColor()
+    override func didMove(to view: SKView) {
+        backgroundColor = UIColor.black
         anchorPoint = CGPoint(x: 0, y: 0.5)
         
         game = Game(option: option)
@@ -34,7 +34,7 @@ class GameScene: SKScene, GameDelegate {
         pauseMenu = PauseMenu(scene: self, delegate: self)
     }
    
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         guard let lastTime = lastTime else {
             self.lastTime = currentTime
             return
@@ -46,7 +46,7 @@ class GameScene: SKScene, GameDelegate {
         self.lastTime = currentTime
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let firstTouch = touches.first else {
             return
         }
@@ -59,7 +59,7 @@ class GameScene: SKScene, GameDelegate {
         }
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for player in game.players {
             guard player is PlayerHuman else {
                 continue
@@ -68,14 +68,14 @@ class GameScene: SKScene, GameDelegate {
             let player = player as! PlayerHuman
             
             for touch in touches {
-                if nodeAtPoint(touch.previousLocationInNode(self)) == player.touchZone && player.canMove {
-                    player.moveTo(touch.locationInNode(self))
+                if atPoint(touch.previousLocation(in: self)) == player.touchZone && player.canMove {
+                    player.moveTo(touch.location(in: self))
                 }
             }
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let firstTouch = touches.first else {
             return
         }
@@ -87,25 +87,25 @@ class GameScene: SKScene, GameDelegate {
     
     // game delgate functions
     func ballHitWall() {
-        scene?.runAction(ping)
+        scene?.run(ping)
     }
     
     func ballHitPlayer() {
-        scene?.runAction(ping)
+        scene?.run(ping)
     }
     
     func roundStarted() {
         scoreBoard.hideWinLabel()
     }
     
-    func roundEnded(winningSide: PlayerSide) {
+    func roundEnded(_ winningSide: PlayerSide) {
         game.endRound(winningSide)
         scoreBoard.setScore(winningSide,
-                            score: game.players[winningSide == PlayerSide.Left ? 0 : 1].score)
+                            score: game.players[winningSide == PlayerSide.left ? 0 : 1].score)
     }
     
-    func gameEnded(winningSide: PlayerSide) {
-        scoreBoard.presentWinner(game.players[winningSide == PlayerSide.Left ? 0 : 1].name)
+    func gameEnded(_ winningSide: PlayerSide) {
+        scoreBoard.presentWinner(game.players[winningSide == PlayerSide.left ? 0 : 1].name)
         game.endGame(winningSide)
     }
     

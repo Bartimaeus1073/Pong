@@ -19,17 +19,17 @@ class MenuScene: SKScene {
     func setTitle() {
         title = SKLabelNode(fontNamed: "Arial-Bold")
         title.text = "Pong"
-        title.color = UIColor.whiteColor()
-        title.horizontalAlignmentMode = .Center
-        title.verticalAlignmentMode = .Center
+        title.color = UIColor.white
+        title.horizontalAlignmentMode = .center
+        title.verticalAlignmentMode = .center
         title.fontSize = 50
         title.position = CGPoint(x: frame.midX, y: frame.maxY - MENU_TITLTE_OFFSET)
         
         addChild(title)
     }
     
-    override func didMoveToView(view: SKView) {
-        backgroundColor = UIColor.blackColor()
+    override func didMove(to view: SKView) {
+        backgroundColor = UIColor.black
         
         setTitle()
         playButton = Button(scene: self, text: "Play",
@@ -40,7 +40,7 @@ class MenuScene: SKScene {
                             action: gvcDelegate.changeSceneToGameSceneWithAIOption)
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let firstTouch = touches.first else {
             return
         }
@@ -49,7 +49,7 @@ class MenuScene: SKScene {
         AIButton.press(firstTouch)
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let firstTouch = touches.first else {
             return
         }

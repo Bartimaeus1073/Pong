@@ -43,23 +43,23 @@ class PauseMenu {
         scene.addChild(root)
     }
     
-    func touch(touch: UITouch) {
+    func touch(_ touch: UITouch) {
         resumeButton.press(touch)
         resetButton.press(touch)
         menuButton.press(touch)
     }
     
-    func release(touch: UITouch) {
+    func release(_ touch: UITouch) {
         resumeButton.release(touch)
         resetButton.release(touch)
         menuButton.release(touch)
     }
     
     func hide() {
-        root.hidden = true
+        root.isHidden = true
     }
     
     func show() {
-        root.hidden = false
+        root.isHidden = false
     }
 }
